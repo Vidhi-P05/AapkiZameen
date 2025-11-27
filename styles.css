@@ -106,13 +106,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-secondary {
     background-color: transparent;
-    color: var(--dark);
-    border: 2px solid var(--dark);
+    color: var(--white);
+    border: 2px solid var(--white);
 }
 
 .btn-secondary:hover {
-    background-color: var(--dark);
-    color: var(--white);
+    background-color: var(--white);
+    color: var(--dark);
 }
 
 .btn-large {
@@ -256,6 +256,7 @@ h1, h2, h3, h4, h5, h6 {
     gap: 1rem;
     padding: 1.25rem 2rem;
     background: rgba(255, 255, 255, 0.15);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.2);

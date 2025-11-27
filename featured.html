@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Featured Lands - AapkiZameen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-soft: #FAF3E1;
+            --bg-accent: #F5E7C6;
+            --brand: #FF6D1F;
+            --dark: #222222;
+            --white: #FFFFFF;
+            --text-gray: #666666;
+            --border: #E0D7C1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-soft);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Lora', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--brand);
+        }
+
+        .favorites-badge {
+            background: var(--brand);
+            color: var(--white);
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .favorites-badge:hover {
+            transform: scale(1.05);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--brand) 0%, #FF8C4F 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Lora', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Filter Section */
+        .filters-section {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            margin-bottom: 3rem;
+        }
+
+        .search-bar {
+            margin-bottom: 1.5rem;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--brand);
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .filter-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-gray);
+        }
+
+        .filter-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .filter-group select:focus {
+            outline: none;
+            border-color: var(--brand);
+        }
+
+        .filter-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn-reset {
+            padding: 0.75rem 1.5rem;
+            background: var(--text-gray);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .btn-reset:hover {
+            background: var(--dark);
+        }
+
+        /* Results Info */
+        .results-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .results-count {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .land-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .land-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: var(--bg-accent);
+        }
+
+        .favorite-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: transform 0.2s;
+            z-index: 10;
+        }
+
+        .favorite-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .favorite-btn.active {
+            color: #FF0000;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-category {
+            display: inline-block;
+            background: var(--bg-accent);
+            color: var(--brand);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .card-title {
+            font-family: 'Lora', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .card-location {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-details {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 1rem;
+        }
+
+        .card-detail-item {
+            text-align: center;
+        }
+
+        .card-detail-label {
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            display: block;
+        }
+
+        .card-detail-value {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .card-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--brand);
+            margin-bottom: 1rem;
+        }
+
+        .btn-view-details {
+            width: 100%;
+            padding: 0.9rem;
+            background: var(--brand);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-view-details:hover {
+            background: #E55D1A;
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .no-results h3 {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .no-results p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .pagination button {
+            padding: 0.8rem 1.5rem;
+            background: var(--white);
+            color: var(--dark);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .pagination button:hover:not(:disabled) {
+            background: var(--brand);
+            color: var(--white);
+            border-color: var(--brand);
+        }
+
+        .pagination button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .pagination span {
+            font-weight: 500;
+            color: var(--text-gray);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 20px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-category {
+            display: inline-block;
+            background: var(--bg-accent);
+            color: var(--brand);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .modal-title {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .modal-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-gray);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--bg-soft);
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-detail-label {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-bottom: 0.3rem;
+        }
+
+        .modal-detail-value {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+
+        .modal-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--brand);
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-description {
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .btn-contact {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--brand);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-contact:hover {
+            background: #E55D1A;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .filters-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-info {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .modal-details {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-image {
+                height: 250px;
+            }
+
+            .modal-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">AapkiZameen</div>
+            <div class="favorites-badge" id="favoritesBtn" role="button" tabindex="0" aria-label="View favorites">
+                <span>❤️</span>
+                <span id="favoritesCount">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Featured Lands & Properties</h1>
+        <p>Discover premium land opportunities across India</p>
+    </section>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Filters Section -->
+        <div class="filters-section">
+            <div class="search-bar">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Search by title or location..."
+                    aria-label="Search properties"
+                >
+            </div>
+
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label for="locationFilter">Location</label>
+                    <select id="locationFilter" aria-label="Filter by location">
+                        <option value="">All Locations</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="categoryFilter">Category</label>
+                    <select id="categoryFilter" aria-label="Filter by category">
+                        <option value="">All Categories</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="priceFilter">Price Range</label>
+                    <select id="priceFilter" aria-label="Filter by price">
+                        <option value="">All Prices</option>
+                        <option value="0-500000">Below ₹5L</option>
+                        <option value="500000-2000000">₹5L - ₹20L</option>
+                        <option value="2000000-10000000">₹20L - ₹1Cr</option>
+                        <option value="10000000-999999999">Above ₹1Cr</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="sortFilter">Sort By</label>
+                    <select id="sortFilter" aria-label="Sort properties">
+                        <option value="newest">Newest First</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="filter-actions">
+                <button class="btn-reset" id="resetBtn">Reset Filters</button>
+            </div>
+        </div>
+
+        <!-- Results Info -->
+        <div class="results-info">
+            <div class="results-count" id="resultsCount">Showing 0 properties</div>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="cards-grid" id="cardsGrid"></div>
+
+        <!-- No Results -->
+        <div class="no-results" id="noResults" style="display: none;">
+            <h3>No Properties Found</h3>
+            <p>Try adjusting your filters or search terms</p>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination">
+            <button id="prevBtn" aria-label="Previous page">Previous</button>
+            <span id="pageInfo">Page 1 of 1</span>
+            <button id="nextBtn" aria-label="Next page">Next</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">×</button>
+            <img class="modal-image" id="modalImage" alt="">
+            <div class="modal-body">
+                <span class="modal-category" id="modalCategory"></span>
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <div class="modal-location" id="modalLocation"></div>
+                <div class="modal-details">
+                    <div class="modal-detail-item">
+                        <span class="modal-detail-label">Price</span>
+                        <span class="modal-detail-value" id="modalPrice"></span>
+                    </div>
+                    <div class="modal-detail-item">
+                        <span class="modal-detail-label">Size</span>
+                        <span class="modal-detail-value" id="modalSize"></span>
+                    </div>
+                </div>
+                <p class="modal-description" id="modalDescription"></p>
+                <button class="btn-contact">Get More Info</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 AapkiZameen. Your trusted real estate partner.</p>
+    </footer>
+
+    <script>
+        // ============================================
+        // DATA SOURCE - Admin can easily update this
+        // ============================================
+        const landsData = [
+            {
+                id: 1,
+                title: "Premium Agricultural Land - Punjab",
+                location: "Punjab",
+                category: "Agricultural",
+                price: "₹15,00,000",
+                priceValue: 1500000,
+                size: "2 Acres",
+                image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=500",
+                description: "Fertile agricultural land with excellent irrigation facilities. Perfect for farming or investment purposes."
+            },
+            {
+                id: 2,
+                title: "Residential Plot - Gurgaon",
+                location: "Gurgaon",
+                category: "Residential Plot",
+                price: "₹45,00,000",
+                priceValue: 4500000,
+                size: "500 sq yards",
+                image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=500",
+                description: "Prime residential plot in developing area with all modern amenities nearby."
+            },
+            {
+                id: 3,
+                title: "Commercial Land - Mumbai",
+                location: "Mumbai",
+                category: "Commercial",
+                price: "₹2,50,00,000",
+                priceValue: 25000000,
+                size: "1000 sq meters",
+                image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500",
+                description: "Strategic commercial property in prime Mumbai location with high footfall."
+            },
+            {
+                id: 4,
+                title: "Industrial Plot - Gujarat",
+                location: "Gujarat",
+                category: "Industrial",
+                price: "₹80,00,000",
+                priceValue: 8000000,
+                size: "5 Acres",
+                image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=500",
+                description: "Large industrial plot with easy access to highways and ports."
+            },
+            {
+                id: 5,
+                title: "Farmhouse Land - Lonavala",
+                location: "Maharashtra",
+                category: "Farmhouse",
+                price: "₹35,00,000",
+                priceValue: 3500000,
+                size: "3 Acres",
+                image: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=500",
+                description: "Scenic farmhouse land with mountain views and natural water source."
+            },
+            {
+                id: 6,
+                title: "Investment Land - Bangalore",
+                location: "Bangalore",
+                category: "Investment",
+                price: "₹60,00,000",
+                priceValue: 6000000,
+                size: "1.5 Acres",
+                image: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=500",
+                description: "High-growth potential investment property near IT corridor."
+            },
+            {
+                id: 7,
+                title: "Agricultural Land - Haryana",
+                location: "Haryana",
+                category: "Agricultural",
+                price: "₹12,00,000",
+                priceValue: 1200000,
+                size: "4 Acres",
+                image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=500",
+                description: "Productive agricultural land with tube well and electricity connection."
+            },
+            {
+                id: 8,
+                title: "Residential Plot - Pune",
+                location: "Pune",
+                category: "Residential Plot",
+                price: "₹28,00,000",
+                priceValue: 2800000,
+                size: "300 sq yards",
+                image: "https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=500",
+                description: "Well-located residential plot in gated community with modern infrastructure."
+            },
+            {
+                id: 9,
+                title: "Commercial Space - Delhi",
+                location: "Delhi",
+                category: "Commercial",
+                price: "₹1,80,00,000",
+                priceValue: 18000000,
+                size: "800 sq meters",
+                image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=500",
+                description: "Premium commercial property in central Delhi business district."
+            },
+            {
+                id: 10,
+                title: "Farmhouse Plot - Nashik",
+                location: "Maharashtra",
+                category: "Farmhouse",
+                price: "₹22,00,000",
+                priceValue: 2200000,
+                size: "2.5 Acres",
+                image: "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?w=500",
+                description: "Beautiful farmhouse plot surrounded by vineyards and orchards."
+            },
+            {
+                id: 11,
+                title: "Investment Plot - Hyderabad",
+                location: "Hyderabad",
+                category: "Investment",
+                price: "₹42,00,000",
+                priceValue: 4200000,
+                size: "1200 sq yards",
+                image: "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=500",
+                description: "Strategic investment property near upcoming metro station."
+            },
+            {
+                id: 12,
+                title: "Agricultural Land - Rajasthan",
+                location: "Rajasthan",
+                category: "Agricultural",
+                price: "₹8,00,000",
+                priceValue: 800000,
+                size: "6 Acres",
+                image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=500",
+                description: "Spacious agricultural land suitable for organic farming."
+            }
+        ];
+
+        // ============================================
+        // STATE MANAGEMENT
+        // ============================================
+        let currentPage = 1;
+        const itemsPerPage = 9;
+        let filteredData = [...landsData];
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+        // ============================================
+        // INITIALIZATION
+        // ============================================
+        function init() {
+            populateFilters();
+            renderCards();
+            updateFavoritesCount();
+            attachEventListeners();
+        }
+
+        // ============================================
+        // POPULATE FILTER DROPDOWNS
+        // ============================================
+        function populateFilters() {
+            const locations = [...new Set(landsData.map(land => land.location))].sort();
+            const categories = [...new Set(landsData.map(land => land.category))].sort();
+
+            const locationFilter = document.getElementById('locationFilter');
+            const categoryFilter = document.getElementById('categoryFilter');
+
+            locations.forEach(location => {
+                const option = document.createElement('option');
+                option.value = location;
+                option.textContent = location;
+                locationFilter.appendChild(option);
+            });
+
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                categoryFilter.appendChild(option);
+            });
+        }
+
+        // ============================================
+        // RENDER CARDS
+        // ============================================
+        function renderCards() {
+            const grid = document.getElementById('cardsGrid');
+            const noResults = document.getElementById('noResults');
+            
+            // Calculate pagination
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const paginatedData = filteredData.slice(startIndex, endIndex);
+
+            // Update results count
+            document.getElementById('resultsCount').textContent = 
+                `Showing ${filteredData.length} ${filteredData.length === 1 ? 'property' : 'properties'}`;
+
+            // Show/hide no results message
+            if (filteredData.length === 0) {
+                grid.style.display = 'none';
+                noResults.style.display = 'block';
+                document.getElementById('pagination').style.display = 'none';
+                return;
+            } else {
+                grid.style.display = 'grid';
+                noResults.style.display = 'none';
+                document.getElementById('pagination').style.display = 'flex';
+            }
+
+            // Render cards
+            grid.innerHTML = paginatedData.map(land => `
+                <div class="land-card" data-id="${land.id}">
+                    <button class="favorite-btn ${favorites.includes(land.id) ? 'active' : ''}" 
+                            data-id="${land.id}" 
+                            aria-label="Add to favorites">
+                        ${favorites.includes(land.id) ? '❤️' : '🤍'}
+                    </button>
+                    <img class="card-image" src="${land.image}" alt="${land.title}">
+                    <div class="card-content">
+                        <span class="card-category">${land.category}</span>
+                        <h3 class="card-title">${land.title}</h3>
+                        <div class="card-location">📍 ${land.location}</div>
+                        <div class="card-details">
+                            <div class="card-detail-item">
+                                <span class="card-detail-label">Size</span>
+                                <span class="card-detail-value">${land.size}</span>
+                            </div>
+                        </div>
+                        <div class="card-price">${land.price}</div>
+                        <button class="btn-view-details" data-id="${land.id}">View Details</button>
+                    </div>  
+                </div>
+            `).join('');  
+            updatePaginationInfo();
+        } 
+        // ============================================
+        // UPDATE PAGINATION INFO 
+        // ============================================
+        function updatePaginationInfo() { 
+            const totalPages = Math.ceil(filteredData.length / itemsPerPage) || 1;
+            document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages}`;
+            document.getElementById('prevBtn').disabled = currentPage === 1;
+            document.getElementById('nextBtn').disabled = currentPage === totalPages;
+        }
+        // ============================================
+        // ATTACH EVENT LISTENERS 
+        // ============================================
+        function attachEventListeners() {
+            // Filter change events
+            document.getElementById('locationFilter').addEventListener('change', applyFilters);
+            document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+            document.getElementById('priceFilter').addEventListener('change', applyFilters);
+            document.getElementById('sortFilter').addEventListener('change', applyFilters);
+            document.getElementById('searchInput').addEventListener('input', applyFilters);
+
+            // Reset button
+            document.getElementById('resetBtn').addEventListener('click', () => {
+                document.getElementById('locationFilter').value = '';
+                document.getElementById('categoryFilter').value = '';
+                document.getElementById('priceFilter').value = '';
+                document.getElementById('sortFilter').value = 'newest';
+                document.getElementById('searchInput').value = '';
+                applyFilters();
+            });
+
+            // Pagination buttons
+            document.getElementById('prevBtn').addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderCards();
+                }
+            });
+
+            document.getElementById('nextBtn').addEventListener('click', () => {
+                const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderCards();
+                }
+            });
+
+            // Card click events (delegation)
+            document.getElementById('cardsGrid').addEventListener('click', (e) => {
+                const card = e.target.closest('.land-card');
+                if (!card) return;
+
+                const landId = parseInt(card.getAttribute('data-id'));
+                if (e.target.classList.contains('btn-view-details')) {
+                    openModal(landId);
+                } else if (e.target.classList.contains('favorite-btn')) {
+                    toggleFavorite(landId, e.target);
+                }
+            });
+
+            // Modal close
+            document.getElementById('modalClose').addEventListener('click', closeModal);
+            document.getElementById('modal').addEventListener('click', (e) => {
+                if (e.target.id === 'modal') closeModal();
+            });
+
+            // Favorites button
+            document.getElementById('favoritesBtn').addEventListener('click', viewFavorites);
+        }
+        // ============================================
+        // APPLY FILTERS    
+        function applyFilters() {
+            const location = document.getElementById('locationFilter').value;
+            const category = document.getElementById('categoryFilter').value;
+            const priceRange = document.getElementById('priceFilter').value;
+            const sortBy = document.getElementById('sortFilter').value;
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+            filteredData = landsData.filter(land => {
+                let matchesLocation = location ? land.location === location : true;
+                let matchesCategory = category ? land.category === category : true;
+                let matchesPrice = true;
+
+                if (priceRange) {
+                    const [min, max] = priceRange.split('-').map(Number);
+                    matchesPrice = land.priceValue >= min && land.priceValue <= max;
+                }
+
+                let matchesSearch = land.title.toLowerCase().includes(searchTerm) || 
+                                    land.location.toLowerCase().includes(searchTerm);
+
+                return matchesLocation && matchesCategory && matchesPrice && matchesSearch;
+            });
+
+            // Sorting
+            if (sortBy === 'price-low') {
+                filteredData.sort((a, b) => a.priceValue - b.priceValue);
+            } else if (sortBy === 'price-high') {
+                filteredData.sort((a, b) => b.priceValue - a.priceValue);
+            } else {
+                filteredData.sort((a, b) => b.id - a.id); // Newest first
+            }
+
+            currentPage = 1; // Reset to first page
+            renderCards();
+        }
+        // ============================================
+        // TOGGLE FAVORITE  
+        function toggleFavorite(landId, btn) {
+            const index = favorites.indexOf(landId);
+            if (index > -1) {
+                favorites.splice(index, 1);
+                btn.classList.remove('active');
+                btn.textContent = '🤍';
+            } else {
+                favorites.push(landId);
+                btn.classList.add('active');
+                btn.textContent = '❤️';
+            }
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            updateFavoritesCount();
+        } 
+        // ============================================
+        // UPDATE FAVORITES COUNT
+        function updateFavoritesCount() {
+            document.getElementById('favoritesCount').textContent = favorites.length;
+        }
+        // ============================================
+        // OPEN MODAL
+        function openModal(landId) {
+            const land = landsData.find(l => l.id === landId);
+            if (!land) return;
+
+            document.getElementById('modalImage').src = land.image;
+            document.getElementById('modalImage').alt = land.title;
+            document.getElementById('modalCategory').textContent = land.category;
+            document.getElementById('modalTitle').textContent = land.title;
+            document.getElementById('modalLocation').textContent = `📍 ${land.location}`;
+            document.getElementById('modalPrice').textContent = land.price;
+            document.getElementById('modalSize').textContent = land.size;
+            document.getElementById('modalDescription').textContent = land.description;
+
+            document.getElementById('modal').classList.add('active');
+        }
+        // ============================================
+        // CLOSE MODAL
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+        // ============================================
+        // VIEW FAVORITES
+        function viewFavorites() {
+            if (favorites.length === 0) {
+                alert('No favorites added yet.');
+                return;
+            }
+            filteredData = landsData.filter(land => favorites.includes(land.id));
+            currentPage = 1;
+            renderCards();
+        }
+        // ============================================
+        // INITIALIZE APP
+        init();
+    </script>
+</body>
+</html>
