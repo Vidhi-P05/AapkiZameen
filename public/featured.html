@@ -841,17 +841,14 @@
             }
         ];
 
-        // ============================================
         // STATE MANAGEMENT
-        // ============================================
         let currentPage = 1;
         const itemsPerPage = 9;
         let filteredData = [...landsData];
         let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
-        // ============================================
+        
         // INITIALIZATION
-        // ============================================
         function init() {
             populateFilters();
             renderCards();
@@ -859,9 +856,8 @@
             attachEventListeners();
         }
 
-        // ============================================
+
         // POPULATE FILTER DROPDOWNS
-        // ============================================
         function populateFilters() {
             const locations = [...new Set(landsData.map(land => land.location))].sort();
             const categories = [...new Set(landsData.map(land => land.category))].sort();
@@ -884,9 +880,8 @@
             });
         }
 
-        // ============================================
+        
         // RENDER CARDS
-        // ============================================
         function renderCards() {
             const grid = document.getElementById('cardsGrid');
             const noResults = document.getElementById('noResults');
@@ -938,18 +933,16 @@
             `).join('');  
             updatePaginationInfo();
         } 
-        // ============================================
+        
         // UPDATE PAGINATION INFO 
-        // ============================================
         function updatePaginationInfo() { 
             const totalPages = Math.ceil(filteredData.length / itemsPerPage) || 1;
             document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages}`;
             document.getElementById('prevBtn').disabled = currentPage === 1;
             document.getElementById('nextBtn').disabled = currentPage === totalPages;
         }
-        // ============================================
+       
         // ATTACH EVENT LISTENERS 
-        // ============================================
         function attachEventListeners() {
             // Filter change events
             document.getElementById('locationFilter').addEventListener('change', applyFilters);
@@ -1006,7 +999,7 @@
             // Favorites button
             document.getElementById('favoritesBtn').addEventListener('click', viewFavorites);
         }
-        // ============================================
+        
         // APPLY FILTERS    
         function applyFilters() {
             const location = document.getElementById('locationFilter').value;
@@ -1043,7 +1036,7 @@
             currentPage = 1; // Reset to first page
             renderCards();
         }
-        // ============================================
+        
         // TOGGLE FAVORITE  
         function toggleFavorite(landId, btn) {
             const index = favorites.indexOf(landId);
@@ -1059,12 +1052,12 @@
             localStorage.setItem('favorites', JSON.stringify(favorites));
             updateFavoritesCount();
         } 
-        // ============================================
+        
         // UPDATE FAVORITES COUNT
         function updateFavoritesCount() {
             document.getElementById('favoritesCount').textContent = favorites.length;
         }
-        // ============================================
+        
         // OPEN MODAL
         function openModal(landId) {
             const land = landsData.find(l => l.id === landId);
@@ -1081,12 +1074,12 @@
 
             document.getElementById('modal').classList.add('active');
         }
-        // ============================================
+        
         // CLOSE MODAL
         function closeModal() {
             document.getElementById('modal').classList.remove('active');
         }
-        // ============================================
+        
         // VIEW FAVORITES
         function viewFavorites() {
             if (favorites.length === 0) {
@@ -1097,9 +1090,20 @@
             currentPage = 1;
             renderCards();
         }
-        // ============================================
+        
         // INITIALIZE APP
         init();
+
+        // APPLY CATEGORY FROM URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedCategory = urlParams.get("category");
+
+        if (selectedCategory) {
+            window.addEventListener("load", () => {
+                document.getElementById("categoryFilter").value = selectedCategory;
+                applyFilters();
+            });
+        }
     </script>
 </body>
 </html>
