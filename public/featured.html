@@ -335,6 +335,7 @@
         .no-results {
             text-align: center;
             padding: 4rem 2rem;
+            display: none;
         }
 
         .no-results h3 {
@@ -656,11 +657,11 @@
 
         <!-- Cards Grid -->
         <div class="cards-grid" id="cardsGrid"></div>
-
         <!-- No Results -->
-        <div class="no-results" id="noResults" style="display: none;">
+        <div class="no-results" id="noResults">
             <h3>No Properties Found</h3>
             <p>Try adjusting your filters or search terms</p>
+        </div>
         </div>
 
         <!-- Pagination -->
@@ -708,8 +709,8 @@
         const landsData = [
             {
                 id: 1,
-                title: "Premium Agricultural Land - Punjab",
-                location: "Punjab",
+                title: "Premium Agricultural Land - Ayodhya",
+                location: "Ayodhya",
                 category: "Agricultural",
                 price: "₹15,00,000",
                 priceValue: 1500000,
@@ -719,8 +720,8 @@
             },
             {
                 id: 2,
-                title: "Residential Plot - Gurgaon",
-                location: "Gurgaon",
+                title: "Residential Plot - Ayodhya",
+                location: "Ayodhya",
                 category: "Residential Plot",
                 price: "₹45,00,000",
                 priceValue: 4500000,
@@ -730,8 +731,8 @@
             },
             {
                 id: 3,
-                title: "Commercial Land - Mumbai",
-                location: "Mumbai",
+                title: "Commercial Land - Dholera",
+                location: "Dholera",
                 category: "Commercial",
                 price: "₹2,50,00,000",
                 priceValue: 25000000,
@@ -741,8 +742,8 @@
             },
             {
                 id: 4,
-                title: "Industrial Plot - Gujarat",
-                location: "Gujarat",
+                title: "Industrial Plot - Dholera",
+                location: "Dholera",
                 category: "Industrial",
                 price: "₹80,00,000",
                 priceValue: 8000000,
@@ -752,8 +753,8 @@
             },
             {
                 id: 5,
-                title: "Farmhouse Land - Lonavala",
-                location: "Maharashtra",
+                title: "Farmhouse Land - Ayodhya",
+                location: "Ayodhya",
                 category: "Farmhouse",
                 price: "₹35,00,000",
                 priceValue: 3500000,
@@ -763,8 +764,8 @@
             },
             {
                 id: 6,
-                title: "Investment Land - Bangalore",
-                location: "Bangalore",
+                title: "Investment Land - Dholera",
+                location: "Dholera",
                 category: "Investment",
                 price: "₹60,00,000",
                 priceValue: 6000000,
@@ -774,8 +775,8 @@
             },
             {
                 id: 7,
-                title: "Agricultural Land - Haryana",
-                location: "Haryana",
+                title: "Agricultural Land - Ayodhya",
+                location: "Ayodhya",
                 category: "Agricultural",
                 price: "₹12,00,000",
                 priceValue: 1200000,
@@ -785,8 +786,8 @@
             },
             {
                 id: 8,
-                title: "Residential Plot - Pune",
-                location: "Pune",
+                title: "Residential Plot - Dholera",
+                location: "Dholera",
                 category: "Residential Plot",
                 price: "₹28,00,000",
                 priceValue: 2800000,
@@ -796,8 +797,8 @@
             },
             {
                 id: 9,
-                title: "Commercial Space - Delhi",
-                location: "Delhi",
+                title: "Commercial Space - Dholera",
+                location: "Dholera",
                 category: "Commercial",
                 price: "₹1,80,00,000",
                 priceValue: 18000000,
@@ -807,8 +808,8 @@
             },
             {
                 id: 10,
-                title: "Farmhouse Plot - Nashik",
-                location: "Maharashtra",
+                title: "Farmhouse Plot - Dholera",
+                location: "Dholera",
                 category: "Farmhouse",
                 price: "₹22,00,000",
                 priceValue: 2200000,
@@ -818,8 +819,8 @@
             },
             {
                 id: 11,
-                title: "Investment Plot - Hyderabad",
-                location: "Hyderabad",
+                title: "Investment Plot - Ayodhya",
+                location: "Ayodhya",
                 category: "Investment",
                 price: "₹42,00,000",
                 priceValue: 4200000,
@@ -829,8 +830,8 @@
             },
             {
                 id: 12,
-                title: "Agricultural Land - Rajasthan",
-                location: "Rajasthan",
+                title: "Agricultural Land - Dholera",
+                location: "Dholera",
                 category: "Agricultural",
                 price: "₹8,00,000",
                 priceValue: 800000,
